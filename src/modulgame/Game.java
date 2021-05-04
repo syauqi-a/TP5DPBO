@@ -43,7 +43,7 @@ public class Game extends Canvas implements Runnable{
 
     AutoBot oAutoBot;
     int botSpeed = 5;
-    int newBot = 50; // tambahkan bot baru setiap 50 detik
+    int newBot = 25; // tambahkan bot baru setiap 25 detik
     
     dbConnection dbcon = new dbConnection();
 
@@ -61,12 +61,12 @@ public class Game extends Canvas implements Runnable{
         if(kesulitan =="Easy"){
             this.botSpeed = 2;
             this.time = 20;
-            this.newBot = 60;
+            this.newBot = 30;
         }
         else if(kesulitan =="Hard"){
             this.botSpeed = 8;
             this.time = 5;
-            this.newBot = 45;
+            this.newBot = 22;
         }
         window = new Window(WIDTH, HEIGHT, "Tugas praktikum 5 DPBO - " + kesulitan, this);
         
@@ -126,7 +126,7 @@ public class Game extends Canvas implements Runnable{
             
             if(System.currentTimeMillis() - timer > 1000){
                 timer += 1000;
-                if(count > 30/botSpeed){ // tambahkan musuh baru :v
+                if(count > newBot && gameState == STATE.Game){ // tambahkan musuh baru :v
                     // create instance of Random class
                     Random rand = new Random();
                     int randX = rand.nextInt(745);
